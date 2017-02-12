@@ -8,7 +8,7 @@ LSLForge is a fork of the popular LSLPlus editing evironment, to provide Linden 
 
 ## Fork Purpose
 
-This fork is to maintain LSL definitions for functions and constants, as well as maintaining Eclipse Plugin Update Site.
+This fork is just to produce a binary version for Windows and Linux that can be used on OpenSim. Render.hs should not produce extra parenthesis which are producing errors in OpenSimulator.
 
 ### News (newest first)
 
