@@ -12,13 +12,13 @@ import Language.Lsl.Internal.Type(LSLType(..), convertValues,LSLValue)
 funcMeta :: [(String,LSLType,[(String,LSLType)],String)]
 funcMeta =
     let dummyNames = zipWith (++) (repeat "arg") (map show [1..])
-        sig2Meta (name,rt,args) = 
+        sig2Meta (name,rt,args) =
             let (argNames,description) = case lookup name funcDescriptions of
                     Nothing -> (dummyNames,"no description")
                     Just (names,desc) -> (names ++ dummyNames,desc)
             in (name, rt,zip argNames args,description)
     in map sig2Meta funcSigs
-        
+
 findSig name = find (\ (fname,_,_) -> name == fname) funcSigs
 
 convertArgs :: RealFrac a => String -> [LSLValue a] -> [LSLValue a]
@@ -28,6 +28,22 @@ convertArgs name args = case findSig name of
 
 funcSigs :: [(String,LSLType,[LSLType])]
 funcSigs = [
+    ("osNpcStand",LLVoid,[LLKey]),
+    ("osNpcStopMoveToTarget",LLVoid,[LLKey]),
+    ("osNpcTouch",LLVoid, [LLKey,LLKey,LLInteger]),
+    ("osNpcWhisper",LLVoid,[LLKey,LLInteger,LLString]),
+    ("osGetNotecard",LLString,[LLString]),
+    ("osGetNotecardLine",LLString,[LLString,LLInteger]),
+    ("osGetNumberOfNotecardLines",LLInteger,[LLString]),
+    ("osMakeNotecard",LLVoid,[LLString,LLList]),
+    ("osMakeNotecard",LLVoid,[LLString,LLString]),
+    ("osSetDynamicTextureData",LLString,[LLString,LLString,LLString,LLString,LLInteger]),
+    ("osSetDynamicTextureDataBlend",LLString,[LLString,LLString,LLString,LLString,LLInteger,LLInteger]),
+    ("osSetDynamicTextureURL",LLString,[LLString,LLString,LLString,LLString,LLInteger]),
+    ("osSetDynamicTextureURLBlend",LLString,[LLString,LLString,LLString,LLString,LLInteger,LLInteger]),
+    ("osSetDynamicTextureURLBlendFace",LLString,
+        [LLString,LLString,LLString,LLString,LLInteger,LLInteger,LLInteger,LLInteger,LLInteger]),
+
     ("llAbs",LLInteger,[LLInteger]),
     ("llAcos",LLFloat,[LLFloat]),
     ("llAddToLandBanList",LLVoid,[LLKey,LLFloat]),
@@ -435,6 +451,9 @@ funcSigs = [
     ("llTargetOmega",LLVoid,[LLVector,LLFloat,LLFloat]),
     ("llTargetRemove",LLVoid,[LLInteger]),
     ("llTeleportAgent",LLVoid,[LLKey,LLString,LLVector,LLVector]),
+    ("osTeleportAgent",LLVoid,[LLKey,LLInteger,LLInteger,LLVector,LLVector]),
+    ("osTeleportAgent",LLVoid,[LLKey,LLString,LLVector,LLVector]),
+    ("osTeleportAgent",LLVoid,[LLKey,LLVector,LLVector]),
     ("llTeleportAgentGlobalCoords",LLVoid,[LLKey,LLVector,LLVector,LLVector]),
     ("llTeleportAgentHome",LLVoid,[LLKey]),
     ("llTextBox",LLVoid,[LLKey,LLString,LLInteger]),
@@ -461,6 +480,45 @@ funcSigs = [
     ]
 
 funcDescriptions = [
+
+    ("osIsNpc",(["npc"],"Returns NPC status on the provided key")),
+    ("osNpcCreate",(["firstname","lastname","position","cloneFrom"],"Creates an NPC named firstname lastname at position from avatar appearance resource cloneFrom\n")),
+    ("osNpcCreate",(["firstname","lastname","position","cloneFrom","options"],"Creates an NPC named firstname lastname at position from avatar appearance resource cloneFrom\n")),
+    ("osNpcGetPos",(["npc"],"Return the current position of the NPC\n")),
+    ("osNpcGetRot",(["npc"],"Gets the rotation of the avatar\n")),
+    ("osNpcGetOwner",(["npc"],"Gets the NPC's owner's UUID ")),
+    ("osNpcLoadAppearance",(["npc","notecard"],"Load appearance from a notecard\n")),
+    ("osNpcMoveTo",(["npc","position"],"Moves npc to the position\n")),
+    ("osNpcMoveToTarget",(["npc","target","options"],"Move the avatar to a given target over time\n")),
+    ("osNpcPlayAnimation",(["npc","animation"],"Plays animation on the NPC identified by its key\n")),
+    ("osNpcRemove",(["npc"],"Removes the NPC specified by key npc\n")),
+    ("osNpcSaveAppearance",(["npc","notecard"],"Save the NPC's current appearance to a notecard in the prim's inventory\n")),
+    ("osNpcSay",(["npc","message"],"NPC says message\n")),
+    ("osNpcSay",(["npc","channel","message"],"NPC says message on the given channel\n")),
+    ("osNpcSetRot",(["npc","rot"],"Set the rotation of the avatar\n")),
+    ("osNpcShout",(["npc","channel","message"],"NPC shouts message on the given channel\n")),
+    ("osNpcSit",(["npc","target","options"],"Makes an NPC sit on an object\n")),
+    ("osNpcStand",(["npc"],"Makes a sitting NPC stand up\n")),
+    ("osNpcStopMoveToTarget",(["npc"],"Stop a current move to a target\n")),
+    ("osNpcStopMoveToTarget",(["npc"],"Stop a current move to a target\n")),
+    ("osNpcTouch",(["npcKey","objectKey","linkNum"],"The prim with the key objectKey will be touched by the NPC\n")),
+    ("osNpcWhisper",(["npc","channel","message"],"NPC whispers message on the given channel\n")),
+
+
+
+    ("osGetNotecard",(["name"],"Reads the entire contents of a notecard within the task inventory, and dumps it into a string\n")),
+    ("osGetNotecardLine",(["name","line"],"Reads a line of text from the specified notecard\n")),
+    ("osGetNumberOfNotecardLines",(["name"],"Reads how many lines a notecard has if the specified notecard exists within the task inventory\n")),
+    
+    ("osMakeNotecard",(["notecardName","contents"],"Creates a notecard with text in the prim that contains the script\n")),
+    ("osMakeNotecard",(["notecardName","contents"],"Creates a notecard with text in the prim that contains the script\n")),
+    
+    ("osSetDynamicTextureData",(["dynamicID","contentType","data","extraParams","timer"],"Renders a dynamically created texture on the prim containing the script and returns the UUID of the newly created texture\n")),
+    ("osSetDynamicTextureDataBlend",(["dynamicID","contentType","data","extraParams","timer","alpha"],"Renders a dynamically created texture on the prim containing the script and returns the UUID of the newly created ,texture\n")),
+    ("osSetDynamicTextureURL",(["dynamicID","contentType","url","extraParams","timer"],"Renders a web texture on the prim containing the script and returns the UUID of the newly created texture\n")),
+    ("osSetDynamicTextureURLBlend",(["dynamicID","contentType","url","extraParams","timer","alpha"],"Renders a web texture on the prim containing the script and returns the UUID of the newly created texture\n")),
+    ("osSetDynamicTextureURLBlendFace",(["dynamicID","contentType","url","extraParams","blend","disp","timer","alpha","face"],"Renders a web texture on the prim containing the script and returns the UUID of the newly created texture\n")),
+
     ("llAbs",(["val"],"")),
     ("llAcos",(["val"],"Returns the arccosine in radians of val\n")),
     ("llAddToLandBanList",(["avatar","hours"],"Add avatar to the land ban list for hours\n")),
@@ -869,6 +927,9 @@ funcDescriptions = [
     ("llTargetOmega",(["axis","spinrate","gain"],"Attempt to spin at spinrate with strength gain\n")),
     ("llTargetRemove",(["number"],"removes target number\n")),
     ("llTeleportAgent",(["avatar","landmark","position","look_at"],"Requests a teleport of avatar to a landmark stored in the object's inventory.\n")),
+    ("osTeleportAgent",(["avatar","regionX","regionY","position","look_at"],"Requests a teleport of avatar to region of coordinates X,Y.\n")),
+    ("osTeleportAgent",(["avatar","regionName","position","look_at"],"Requests a teleport of avatar to region named.\n")),
+    ("osTeleportAgent",(["avatar","position","look_at"],"Requests a teleport of avatar to same region named.\n")),
     ("llTeleportAgentGlobalCoords",(["agent","global_coordinates","region_coordinates","look_at"],"Teleports an agent to set of a region_coordinates within a region at the specified global_coordinates.\n")),
     ("llTeleportAgentHome",(["id"],"Teleports agent on owner's land to agent's home location\n")),
     ("llTextBox",(["avatar","message","chat_channel"],"Shows a dialog box on avatar's screen with the text message. It contains a text box for input, any text that is entered is said by avatar on chat_channel when the 'OK' button is clicked.\n")),
