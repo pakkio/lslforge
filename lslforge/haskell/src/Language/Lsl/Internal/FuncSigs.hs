@@ -100,6 +100,118 @@ funcSigs = [
     ("osSetDynamicTextureURLBlend",LLString,[LLString,LLString,LLString,LLString,LLInteger,LLInteger]),
     ("osSetDynamicTextureURLBlendFace",LLString,[LLString,LLString,LLString,LLString,LLInteger,LLInteger,LLInteger,LLInteger,LLInteger]),
 
+        --Prim manipulations
+    ("osForceBreakAllLinks",LLVoid,[]),
+    ("osForceBreakLink",LLVoid,[LLInteger]),
+    ("osForceCreateLink",LLVoid,[LLKey,LLInteger]),
+    ("osGetInventoryDesc",LLString,[LLString]),
+    ("osGetLinkPrimitiveParams",LLList,[LLInteger,LLList]),
+    ("osGetPrimitiveParams",LLList,[LLKey,LLList]),
+    ("osGetRezzingObject",LLString,[]),
+    ("osIsUUID",LLInteger,[LLString]),
+    --
+    -- Int32 costante??
+    --
+    ("osListenRegex",LLInteger,[LLInteger,LLString,LLString,LLString,LLInteger]),
+    --
+    --
+    ("osMessageAttachments",LLVoid,[LLKey,LLString,LLList,LLInteger]),
+    ("osMessageObject",LLVoid ,[LLKey,LLString]),
+    ("osSetPrimitiveParams",LLVoid,[LLKey,LLList]),
+    ("osSetProjectionParams",LLVoid,[LLInteger,LLKey,LLFloat,LLFloat,LLFloat]),
+    ("osSetProjectionParams",LLVoid,[LLKey,LLInteger,LLKey,LLFloat,LLFloat,LLFloat]),
+
+    --MISC
+    ("osCollisionSound",LLVoid,[LLString,LLFloat]),
+    ("osDie",LLFloat,[LLKey]),
+    ("osFormatString",LLString,[LLString,LLList]),
+    ("osKey2Name",LLString,[LLKey]),
+    ("osList2Double",LLFloat,[LLList,LLInteger]),
+    ("osMatchString",LLList,[LLString,LLString,LLInteger]),
+    ("osMax",LLFloat,[LLFloat,LLFloat]),
+    ("osMin",LLFloat,[LLFloat,LLFloat]),
+    ("osReplaceString",LLString,[LLString,LLString,LLString,LLInteger,LLInteger]),
+    ("osRegexLsMatch",LLInteger,[LLString,LLString]),
+    ("osSetContentType",LLVoid,[LLKey,LLString]),
+    ("osSetStateEvents",LLVoid,[LLInteger]),
+    ("osUnixTimeToTimestamp",LLString,[LLInteger]),
+    
+    --Script Permissions (Pending Peer Review)
+    ("osGrantScriptPermissions",LLVoid,[LLKey,LLString]),
+    ("osRevokeScriptPermissions",LLVoid,[LLKey,LLString]),
+    
+    --Administration
+    ("osConsoleCommand",LLInteger,[LLString]),
+    ("osRegionNotice",LLVoid,[LLString]),
+    ("osRegionRestart",LLInteger,[LLFloat]),
+    ("osSetParcelMediaURL",LLVoid,[LLString]),
+    ("osSetParcelSIPAddress",LLVoid,[LLString]),
+    ("osSetPrimFloatOnWater",LLVoid,[LLInteger]),
+    
+    --Grid Information
+    ("osGetGridCustom",LLString,[LLString]),
+    ("osGetGridGatekeeperURI",LLString,[]),
+    ("osGetGridHomeURI",LLString,[]),
+    ("osGetGridLoginURI",LLString,[]),
+    ("osGetGridName",LLString,[]),
+    ("osGetGridNick",LLString,[]),
+    ("osGetMapTexture",LLKey,[]),
+    ("osGetPhysicsEngineName",LLString,[]),
+    ("osGetPhysicsEngineType",LLString,[]),
+    ("osGetRegionMapTexture",LLKey,[LLString]),
+    ("osGetRegionSize",LLVector,[]),
+    ("osGetRegionStats",LLList,[]),
+    ("osGetScriptEngineName",LLString,[]),
+    ("osGetSimulatorMemory",LLInteger,[]),
+    ("osGetSimulatorVersion",LLString,[]),
+    ("osLoadedCreationDate",LLString,[]),
+    ("osLoadedCreationID",LLString,[]),
+    ("osLoadedCreationTime",LLString,[]),
+    
+    --WindLights
+    ("osGetCurrentSunHour",LLFloat,[]),
+    ("osGetSunParam",LLFloat,[]),
+    ("osGetWindParam",LLFloat,[]),
+    ("osSetEstateSunSettings",LLVoid,[LLInteger,LLFloat]),
+    ("osSetRegionSunSetting",LLVoid,[LLInteger,LLInteger,LLFloat]),
+    ("osSetRegionWaterHeight",LLVoid,[LLFloat]),
+    ("osSetSunParam",LLVoid,[LLString,LLFloat]),
+    ("osSetWindParam",LLVoid,[LLString,LLString,LLFloat]),
+    ("osWindActiveModelPluginName",LLString,[]),
+    
+    --Terrains
+    ("osGetTerrainHeight",LLFloat,[LLInteger,LLInteger]),
+    ("osSetTerrainHeight",LLInteger,[LLInteger,LLInteger,LLFloat]),
+    ("osSetTerrainTexture",LLVoid,[LLInteger,LLKey]),
+    ("osSetTerrainTextureHeight",LLVoid,[LLInteger,LLFloat,LLFloat]),
+    ("osTerrainFlush",LLVoid,[]),
+    
+    --Parcels
+    ("osParcelJoin",LLVoid,[LLVector,LLVector]),
+    ("osParcelSubdivide",LLVoid,[LLVector,LLVector]),
+    ("osSetParcelDetails",LLVoid,[LLVector,LLList]),
+    
+    --HTTP
+    ("osRequestSecureURL",LLVoid,[LLList]),
+    ("osRequestURL",LLVoid,[LLList]),
+    
+    --Prim Drawings
+    ("osDrawEllipse",LLString,[LLString,LLInteger,LLInteger]),
+    ("osDrawFilledPolygon",LLString,[LLString,LLList,LLList]),
+    ("osDrawFilledRectangle",LLString,[LLString,LLInteger,LLInteger]),
+    ("osDrawImage",LLString,[LLString,LLInteger,LLInteger,LLString]),
+    ("osDrawLine",LLString,[LLString,LLInteger,LLInteger,LLInteger,LLInteger]),
+    ("osDrawPolygon",LLString,[LLString,LLList,LLList]),
+    ("osDrawRectangle",LLString,[LLString,LLInteger,LLInteger]),
+    ("osDrawText",LLString,[LLString,LLString]),
+    ("osGetDrawStringSize",LLVector,[LLString,LLString,LLString,LLInteger]),
+    ("osMovePen",LLString,[LLString,LLInteger,LLInteger]),
+    ("osSetFontName",LLString,[LLString,LLString]),
+    ("osSetFontSize",LLString,[LLString,LLInteger]),
+    ("osSetPenCap",LLString,[LLString,LLString,LLString]),
+    ("osSetPenColor",LLString,[LLString,LLString]),
+    ("osSetPenSize",LLString,[LLString,LLInteger]),
+
     ("llAbs",LLInteger,[LLInteger]),
     ("llAcos",LLFloat,[LLFloat]),
     ("llAddToLandBanList",LLVoid,[LLKey,LLFloat]),
@@ -627,16 +739,122 @@ funcDescriptions = [
     ("osGetNotecard",(["name"],"Reads the entire contents of a notecard within the task inventory, and dumps it into a string\n")),
     ("osGetNotecardLine",(["name","line"],"Reads a line of text from the specified notecard\n")),
     ("osGetNumberOfNotecardLines",(["name"],"Reads how many lines a notecard has if the specified notecard exists within the task inventory\n")),
+    ("osMakeNotecard",(["notecardName","contents"],"Creates a notecard with text in the prim that contains the script\n")),
+        
     
-    ("osMakeNotecard",(["notecardName","contents"],"Creates a notecard with text in the prim that contains the script\n")),
-    ("osMakeNotecard",(["notecardName","contents"],"Creates a notecard with text in the prim that contains the script\n")),
     
     ("osSetDynamicTextureData",(["dynamicID","contentType","data","extraParams","timer"],"Renders a dynamically created texture on the prim containing the script and returns the UUID of the newly created texture\n")),
     ("osSetDynamicTextureDataBlend",(["dynamicID","contentType","data","extraParams","timer","alpha"],"Renders a dynamically created texture on the prim containing the script and returns the UUID of the newly created ,texture\n")),
     ("osSetDynamicTextureURL",(["dynamicID","contentType","url","extraParams","timer"],"Renders a web texture on the prim containing the script and returns the UUID of the newly created texture\n")),
     ("osSetDynamicTextureURLBlend",(["dynamicID","contentType","url","extraParams","timer","alpha"],"Renders a web texture on the prim containing the script and returns the UUID of the newly created texture\n")),
     ("osSetDynamicTextureURLBlendFace",(["dynamicID","contentType","url","extraParams","blend","disp","timer","alpha","face"],"Renders a web texture on the prim containing the script and returns the UUID of the newly created texture\n")),
+    --Prim manipulations
+    ("osForceBreakAllLinks",([],"Identical to llBreakAllLinks except that it doesn't require the link permission to be granted\n")),
+    ("osForceBreakLink",(["link"],"Identical to llBreakLink except that it doesn't require the link permission to be granted\n")),
+    ("osForceCreateLink",(["target","parent"],"Identical to llCreateLink except that it doesn't require the link permission to be granted\n")),
+    ("osGetInventoryDesc",(["name"],"Returns a string that is the description of inventory item name\n")),
+    ("osGetLinkPrimitiveParams",(["linknumber","rules"],"Returns the primitive parameters for the linkset prim or prims specified by linknumber\n")),
+    ("osGetPrimitiveParams",(["prim","rules"],"Gets the parameters for the prim specified by prim_uuid according to rules\n")),
+    ("osGetRezzingObject",([],"Get the key of the object that rezzed this object\n")),
+    ("osIsUUID",(["thing"],"Returns 1 if the supplied string is a valid UUID, returns 0 otherwise\n")),
+    ("osListenRegex",(["channelID","name","ID","msg","regexBitfield"],"Allows the server to filter listen events by regular expressions\n")),
+    ("osMessageAttachments",(["avatar","message","attachmentPoints","options"],"Sends a specified message to the specified avatar's attachments on the specified attachment points\n")),
+    ("osMessageObject",(["objectUUID","message"],"Sends a message to to object identified by the given UUID\n")),
+    ("osSetPrimitiveParams",(["prim","rules"],"Sets the parameters for the prim specified by prim_uuid according to rules\n")),
+    ("osSetProjectionParams",(["projection","texture","fov","focus","amb"],"Control the projection map in the host prim\n")),
+    ("osSetProjectionParams",(["prim","projection","texture","fov","focus","amb"],"Control the projection map in the host prim and another prim identified by it's uuid\n")),
 
+--MISC
+    ("osCollisionSound",(["impact_sound","impact_volume"],"Sets collision sound to impact_sound with specified volume.\n")),
+    ("osDie",(["objectUUID"],"Description of this function will be added later\n")),
+    ("osFormatString",(["format","params"],"Return the string with parameters substituted into it.\n")),
+    ("osKey2Name",(["id"],"Returns the avatar's name, based on their UUID.\n")),
+    ("osList2Double",(["src","index"],"This function converts a value in the specified index of the list src to the double data type.\n")),
+    ("osMatchString",(["src","pattern","start"],"This function returns a list containing the matches from the given string.\n")),
+    ("osMax",(["a","b"],"Returns the larger of two numbers. Wraps to system Math.Max()\n")),
+    ("osMin",(["a","b"],"Returns the smaller of two numbers. Wraps to the system Math.Min() function.\n")),
+    ("osReplaceString",(["src","pattern","replace","count","start"],"This function is for regular expression-based string replacement.\n")),
+    ("osRegexLsMatch",(["input","pattern"],"Returns 1 if the input string matches the regular expression pattern. Wraps to Regex.IsMatch()\n")),
+    ("osSetContentType",(["id","type"],"Sets an arbitrary content return type for an llRequestUrl()\n")),
+    ("osSetStateEvents",(["events"],"This function is a hack. There is no reason for it's existence anymore, since state events now work properly.\n")),
+    ("osUnixTimeToTimestamp",(["epoch"],"This function allows an input Unix time to be converted to an llGetTimeStamp() format.\n")),
+    
+    --Script Permissions (Pending Peer Review)
+    ("osGrantScriptPermissions",(["allowed_key","function"],"Dynamically allow ossl execution to owner/creator/group by function name.\n")),
+    ("osRevokeScriptPermissions",(["revoked_key","function"],"Dynamically allow/disallow ossl execution to owner/creator/group by function name.\n")),
+    
+    --Administration
+    ("osConsoleCommand",(["command"],"This function allows an LSL script to directly execute a command to opensim's console.\n")),
+    ("osRegionNotice",(["msg"],"Sends a region notice to the entire current region.\n")),
+    ("osRegionRestart",(["seconds"],"Restarts a region after a specified timeout.\n")),
+    ("osSetParcelMediaURL",(["url"],"Sets the Media URL for the parcel the scripted object is in.\n")),
+    ("osSetParcelSIPAddress",(["SIPAddress"],"No descriptions provided\n")),
+    ("osSetPrimFloatOnWater",(["float"],"No descriptions provided\n")),
+    
+    --Grid Information
+    ("osGetGridCustom",(["key"],"Returns the value of the GridInfo key as a string.\n")),
+    ("osGetGridGatekeeperURI",([],"Returns the current grid's Gatekeeper URI as a string.\n")),
+    ("osGetGridHomeURI",([],"Returns the current grid's home URI as a string.\n")),
+    ("osGetGridLoginURI",([],"Returns the current grid's login URI as a string.\n")),
+    ("osGetGridName",([],"Returns the current grid's name as a string.\n")),
+    ("osGetGridNick",([],"Returns the current grid's nickname as a string.\n")),
+    ("osGetMapTexture",([],"Returns the UUID of the map texture of the current region.\n")),
+    ("osGetPhysicsEngineName",([],"This function returns a string containing the name and version number of the physics engine.\n")),
+    ("osGetPhysicsEngineType",([],"This function returns a string containing the name of the Physics Engine.\n")),
+    ("osGetRegionMapTexture",(["regionName"],"This function retrieves the UUID of the texture used to represent the named region on the world map, and returns it.\n")),
+    ("osGetRegionSize",([],"Usually this function returns 256x256. However, when called in a var/mega region it returns the size of the entire simulator.\n")),
+    ("osGetRegionStats",([],"Returns a list of float values representing a number of region statistics.\n")),
+    ("osGetScriptEngineName",([],"Returns the name of the script engine which is currently enabled on the server.\n")),
+    ("osGetSimulatorMemory",([],"No descriptions provided\n")),
+    ("osGetSimulatorVersion",([],"This function returns a string containing the current simulator version.\n")),
+    ("osLoadedCreationDate",([],"This function returns a string containing the date that a sim was first created.\n")),
+    ("osLoadedCreationID",([],"This function returns a string containing the UUID that a sim was originally created with.\n")),
+    ("osLoadedCreationTime",([],"This function returns a string containing the time that a sim was first created.\n")),
+    
+    --WindLights
+    ("osGetCurrentSunHour",([],"Returns a float value of the current sun hour (24 hour clock). Hour 0 is sunrise.\n")),
+    ("osGetSunParam",([],"No descriptions provided\n")),
+    ("osGetWindParam",([],"Gets the value of param property for plugin module.\n")),
+    ("osSetEstateSunSettings",(["sunFixed","sunHour"],"This function allows for an estate owner or manager to change the sun settings for the entire estate.\n")),
+    ("osSetRegionSunSetting",(["useEstateSun","sunFixed","sunHour"],"Sets the Sun parameters for the Region.\n")),
+    ("osSetRegionWaterHeight",(["height"],"Sets the water height for the current region.\n")),
+    ("osSetSunParam",(["param","value"],"No descriptions provided\n")),
+    ("osSetWindParam",(["plugin","param","value"],"Sets value of param property for plugin module.\n")),
+    ("osWindActiveModelPluginName",([],"Gets active wind plugin name,specified by wind_plugin in OpenSim.ini.\n")),
+    
+    --Terrains
+    ("osGetTerrainHeight",(["x","y"],"No descriptions provided\n")),
+    ("osSetTerrainHeight",(["x","y","val"],"Sets terrain height X & Y Values, double = float.\n")),
+    ("osSetTerrainTexture",(["level","texture"],"Set the terrain texture of the estate to the texture given as key. The level can be 0, 1, 2 or 3.\n")),
+    ("osSetTerrainTextureHeight",(["corner","low","high"],"Set the terrain texture height of the estate. The level can be 0, 1, 2 or 3.\n")),
+    ("osTerrainFlush",([],"Function updates terrain changes to OpenSimulator database.\n")),
+    
+    --Parcels
+    ("osParcelJoin",(["pos1","pos2"],"Joins two adjacent parcels within the same region.\n")),
+    ("osParcelSubdivide",(["pos1","pos2"],"Subdivides a parcel into two adjacent parcels within the same region.\n")),
+    ("osSetParcelDetails",(["pos","rules"],"This function is the counterpart to llGetParcelDetails. Currently PARCEL_DETAILS_NAME, PARCEL_DETAILS_DESC, PARCEL_DETAILS_OWNER, PARCEL_DETAILS_GROUP, PARCEL_DETAILS_CLAIMDATE are implemented. Note that the threat levels for PARCEL_DETAILS_NAME and PARCEL_DETAILS_DESC are High, and those for PARCEL_DETAILS_OWNER, PARCEL_DETAILS_GROUP and PARCEL_DETAILS_CLAIMDATE are VeryHigh.\n")),
+    
+    --HTTP
+    ("osRequestSecureURL",(["options"],"Requests one HTTPS:// url (opensim version 0.9 or over)\n")),
+    ("osRequestURL",(["options"],"Requests one HTTP:// url (opensim version 0.9 or over)\n")),
+    
+    --Prim Drawings
+    ("osDrawEllipse",(["drawList","width","height"],"Appends an Ellipse drawing command to the string provided in drawList and returns the result.\n")),
+    ("osDrawFilledPolygon",(["drawList","xpoints","ypoints"],"Appends a FillPolygon drawing command to the string provided in drawList and returns the result.\n")),
+    ("osDrawFilledRectangle",(["drawList","width","height"],"Appends a FillRectangle drawing command to the string provided in drawList and returns the result.\n")),
+    ("osDrawImage",(["drawList","width","height","imageUrl"],"Appends an Image drawing command to the string provided in drawList and returns the result.\n")),
+    ("osDrawLine",(["drawList","startX","startY","endX","endY"],"Depending on the form, appends a LineTo drawing command, or MoveTo and LineTo commands, to the string provided in drawList and returns the result.\n")),
+    ("osDrawPolygon",(["drawList","xpoints","ypoints"],"Appends a Polygon drawing command to the string provided in drawList and returns the result.\n")),
+    ("osDrawRectangle",(["drawLis","width","height"],"Appends a Rectangle drawing command to the string provided in drawList and returns the result.\n")),
+    ("osDrawText",(["drawList","text"],"Appends a Text drawing command to the string provided in drawList and returns the result.\n")),
+    ("osGetDrawStringSize",(["contentType","text","fontName","fontSize"],"Returns a vector containing the horizontal and vertical dimensions in pixels of the specified text, if drawn in the specified font and at the specified point size.\n")),
+    ("osMovePen",(["drawList","x","y"],"This moves the pen's location to the coordinates specified by the x and y parameters, without drawing anything.\n")),
+    ("osSetFontName",(["drawList","fontName"],"No descriptions provided\n")),
+    ("osSetFontSize",(["drawList","fontSize"],"Sets the size of the font used by subsequent osDrawTextText() calls.\n")),
+    ("osSetPenCap",(["drawList","direction","type"],"Appends a PenCap drawing command to the string provided in drawList and returns the result.\n")),
+    ("osSetPenColor",(["drawList","color"],"Appends a PenColor drawing command to the string provided in drawList and returns the result.\n")),
+    ("osSetPenSize",(["drawList","penSize"],"This sets the pen size to a square of penSize pixels by penSize pixels.\n")),
+    
     ("llAbs",(["val"],"")),
     ("llAcos",(["val"],"Returns the arccosine in radians of val\n")),
     ("llAddToLandBanList",(["avatar","hours"],"Add avatar to the land ban list for hours\n")),
