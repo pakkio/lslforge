@@ -1,4 +1,4 @@
-{-
+{- 
    The 'Internal Functions' of LSL are not a formal grouping of functions, but by my definition
    are all the functions that -
    * do not affect the SL environment in any way.  I.e. they don't communicate information
